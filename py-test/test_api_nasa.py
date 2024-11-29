@@ -3,7 +3,9 @@ import requests
 
 # BASE URL da NASA API e chave da API
 BASE_URL = "https://api.nasa.gov/planetary/apod"
-API_KEY = "MEY3OkcNh5Yfi4tTQVT3gsfnYcz8THvzpUqCh9t7"  # Chave pública de exemplo
+
+# CHAVE DA API
+API_KEY = "MEY3OkcNh5Yfi4tTQVT3gsfnYcz8THvzpUqCh9t7"  # <---- CHAVE DA API
 
 def test_apod():
     # Teste básico: buscar a Astronomy Picture of the Day (APOD)

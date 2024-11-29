@@ -3,7 +3,10 @@ import requests
 
 # BASE URL da API ReceitaWS e chave da API
 BASE_URL = "https://www.receitaws.com.br/v1/cnpj/"
-API_KEY = "efd7dfcdf8f629707f496d9ffecdb1a4557e04408f4421f63b9090965265ef2d"  #Chave de acesso da api (SÓ PODEM SER RODADOS 3 TESTES POR MINUTO)
+
+# CHAVE DA API
+API_KEY = "efd7dfcdf8f629707f496d9ffecdb1a4557e04408f4421f63b9090965265ef2d"  #(SÓ PODEM SER RODADOS 3 TESTES POR MINUTO)
+                                # ^ CHAVE DA API ^ #
 
 def test_consulta_cnpj_valido():
     # Testar consulta com um CNPJ válido

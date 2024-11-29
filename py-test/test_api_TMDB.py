@@ -3,7 +3,9 @@ import requests
 
 # Configurações da API
 BASE_URL = "https://api.themoviedb.org/3"
-API_KEY = "a97bd91ab42ded2e603828674bccfa6f" 
+
+# Chave pessoal da API para obter os testes
+API_KEY = "a97bd91ab42ded2e603828674bccfa6f"  # <----- CHAVE DA API 
 
 def test_invalid_api_key():
     # Testa o comportamento da API com uma chave inválida

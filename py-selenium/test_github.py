@@ -31,6 +31,3 @@ def test_github_forgot_password():
     time.sleep(2)
     
     driver.quit()
-
-# Testar
-test_github_forgot_password()

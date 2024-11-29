@@ -7,7 +7,7 @@ BASE_URL = "https://api.nasa.gov/planetary/apod"
 # CHAVE DA API
 API_KEY = "MEY3OkcNh5Yfi4tTQVT3gsfnYcz8THvzpUqCh9t7"  # <---- CHAVE DA API
 
-### TESTES BÁSICOS ###
+                # ---------------------- TESTES BÁSICOS ----------------------
 def test_apod():
     """
     Teste básico: buscar a Astronomy Picture of the Day (APOD).
@@ -31,7 +31,8 @@ def test_apod_date():
     assert data["date"] == "2024-11-25", f"A data retornada é incorreta: {data['date']}"
     print(f"Imagem do dia ({data['date']}): {data['title']}")
 
-### TESTES DE VALIDAÇÃO ###
+                   # ---------------------- TESTES DE VALIDAÇÃO ----------------------
+
 def test_apod_copyright():
     """
     Testa se a resposta contém o campo de copyright.
@@ -67,7 +68,7 @@ def test_apod_description():
     assert len(data["explanation"]) > 10, "A explicação é muito curta"
     print(f"Descrição da imagem do dia:\n{data['explanation']}")
 
-### TESTES DE ERRO ###
+                # ---------------------- TESTES DE ERRO ----------------------
 def test_apod_future_date():
     """
     Testar requisição para uma data futura.
@@ -94,7 +95,8 @@ def test_apod_invalid_api_key():
     assert response.status_code == 403, "A API deveria retornar 403 para chave inválida"
     print("Erro retornado para chave inválida, conforme esperado.")
 
-### TESTES PARAMETRIZADOS ###
+              # ---------------------- TESTES PARAMETRIZADOS ----------------------
+
 @pytest.mark.parametrize("date, expected_status", [
     ("2024-11-25", 200),  # Data válida
     ("2050-01-01", 400),  # Data futura

@@ -7,6 +7,9 @@ BASE_URL = "https://www.receitaws.com.br/v1/cnpj/"
 # CHAVE DA API
 API_KEY = "efd7dfcdf8f629707f496d9ffecdb1a4557e04408f4421f63b9090965265ef2d"  # Limite: 3 testes/minuto
 
+                    # ---------------------- TESTES DE VALIDAÇÃO ----------------------
+
+
 def test_consulta_cnpj_valido():
     """
     Testar consulta com um CNPJ válido.
@@ -19,6 +22,11 @@ def test_consulta_cnpj_valido():
     assert "nome" in data, "Campo 'nome' não encontrado na resposta"
     assert data["status"] == "OK", f"Status da resposta não esperado: {data['status']}"
     print(f"Nome da empresa: {data['nome']}")
+
+
+                      # ---------------------- TESTES PARAMETRIZADOS ----------------------
+
+
 
 @pytest.mark.parametrize("cnpj, expected_status, expected_key", [
     ("00000000000191", "OK", "nome"),      # CNPJ válido

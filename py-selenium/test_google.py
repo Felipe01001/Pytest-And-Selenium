@@ -30,6 +30,3 @@ def test_google_search_and_open_result():
     time.sleep(5)
     
     driver.quit()
-
-# Testar
-test_google_search_and_open_result()

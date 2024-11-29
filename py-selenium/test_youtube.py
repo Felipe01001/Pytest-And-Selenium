@@ -33,6 +33,3 @@ def test_youtube_search_and_play():
     time.sleep(10)
     
     driver.quit()
-
-# Testar
-test_youtube_search_and_play()

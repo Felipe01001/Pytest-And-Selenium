@@ -4,7 +4,8 @@ import requests
 # Base URL da API
 BASE_URL = "https://hp-api.onrender.com/api"
 
-### TESTES PARAMETRIZADOS ###
+                    # ---------------------- TESTES PARAMETRIZADOS ----------------------
+
 @pytest.mark.parametrize("endpoint, expected_key", [
     ("/characters", "name"),
     ("/characters/students", "house"),
@@ -36,7 +37,8 @@ def test_parametrized_houses(house, expected_count):
     assert len(data) >= expected_count, f"Esperava pelo menos {expected_count} estudantes na casa {house}"
     print(f"Teste bem-sucedido: {len(data)} estudantes retornados para a casa {house}.")
 
-### TESTES DE VALIDAÇÃO ###
+          # ---------------------- TESTES DE VALIDAÇÃO ----------------------
+
 def test_get_characters():
     """
     Testa a recuperação da lista de personagens.
@@ -86,7 +88,8 @@ def test_search_character_by_name():
     assert character is not None, f"Personagem {character_name} não encontrado"
     print(f"Teste bem-sucedido: Personagem '{character['name']}' encontrado.")
 
-### TESTES DE ERRO ###
+
+                    # ---------------------- TESTES DE ERRO ----------------------
 def test_invalid_endpoint():
     """
     Testa um endpoint inexistente.

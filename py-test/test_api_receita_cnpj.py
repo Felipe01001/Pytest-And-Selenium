@@ -9,7 +9,6 @@ API_KEY = "efd7dfcdf8f629707f496d9ffecdb1a4557e04408f4421f63b9090965265ef2d"  # 
 
                     # ---------------------- TESTES DE VALIDAÇÃO ----------------------
 
-
 def test_consulta_cnpj_valido():
     """
     Testar consulta com um CNPJ válido.

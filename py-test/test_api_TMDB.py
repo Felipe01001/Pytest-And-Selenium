@@ -26,7 +26,6 @@ def test_parametrized_api_key(api_key, expected_status):
     )
     print(f"Rota: {BASE_URL + endpoint} | Teste parametrizado com chave {'ausente' if api_key is None else api_key}: objetivo concluído.")
 
-
 @pytest.mark.parametrize("movie_id, expected_status", [
     (550, 200),        # Filme existente
     (99999999, 404),   # Filme inexistente

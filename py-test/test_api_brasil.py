@@ -55,6 +55,7 @@ def test_invalid_cep():
     assert "message" in data, "A resposta de erro deveria conter uma mensagem explicativa"
     print(f"Rota: {BASE_URL + endpoint} | Objetivo concluído: Erro esperado retornado para CEP inválido.")
 
+
 def test_invalid_cnpj():
     """Teste de erro: Verifica comportamento para CNPJ inválido."""
     endpoint = "/cnpj/v1/123"

@@ -1,6 +1,2 @@
-# Ignorar caches do pytest
-/.pytest_cache
-
-
-# Ignorar ambiente de testes
-/.ambiente
+/ambiente/
+/.pytest_cache/

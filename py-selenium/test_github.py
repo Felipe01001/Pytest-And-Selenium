@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 
+
 def test_github_forgot_password():
     driver = webdriver.Chrome()  # Certifique-se de que o ChromeDriver está configurado corretamente
     driver.get("https://github.com/login")

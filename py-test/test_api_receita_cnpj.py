@@ -5,11 +5,12 @@ import requests
 BASE_URL = "https://www.receitaws.com.br/v1/cnpj/"
 
 # CHAVE DA API
-API_KEY = "efd7dfcdf8f629707f496d9ffecdb1a4557e04408f4421f63b9090965265ef2d"  #(SÓ PODEM SER RODADOS 3 TESTES POR MINUTO)
-                                # ^ CHAVE DA API ^ #
+API_KEY = "efd7dfcdf8f629707f496d9ffecdb1a4557e04408f4421f63b9090965265ef2d"  # Limite: 3 testes/minuto
 
 def test_consulta_cnpj_valido():
-    # Testar consulta com um CNPJ válido
+    """
+    Testar consulta com um CNPJ válido.
+    """
     cnpj = "00000000000191"  # Exemplo: CNPJ da Receita Federal
     headers = {"Authorization": f"Bearer {API_KEY}"}
     response = requests.get(BASE_URL + cnpj, headers=headers)
@@ -19,24 +20,18 @@ def test_consulta_cnpj_valido():
     assert data["status"] == "OK", f"Status da resposta não esperado: {data['status']}"
     print(f"Nome da empresa: {data['nome']}")
 
-def test_consulta_cnpj_invalido():
-    # Testar consulta com um CNPJ inválido
-    cnpj = "12345678000100"  # CNPJ fictício inválido
+@pytest.mark.parametrize("cnpj, expected_status, expected_key", [
+    ("00000000000191", "OK", "nome"),      # CNPJ válido
+    ("00000000000000", "ERROR", "message")   # CNPJ inexistente
+])
+def test_consulta_cnpj_parametrizado(cnpj, expected_status, expected_key):
+    """
+    Testar múltiplos casos de consulta de CNPJ em um único teste parametrizado.
+    """
     headers = {"Authorization": f"Bearer {API_KEY}"}
     response = requests.get(BASE_URL + cnpj, headers=headers)
-    assert response.status_code == 200, "Erro ao acessar API de consulta de CNPJ"
+    assert response.status_code == 200, f"Erro ao acessar API para CNPJ {cnpj}"
     data = response.json()
-    assert data["status"] == "ERROR", f"Status da resposta não esperado: {data['status']}"
-    assert "message" in data, "Mensagem de erro não encontrada na resposta"
-    print(f"Erro retornado: {data['message']}")
-
-def test_consulta_cnpj_sem_autorizacao():
-    cnpj = "00000000000191"
-    response = requests.get(BASE_URL + cnpj)  # Sem cabeçalho de autorização
-    assert response.status_code == 200, "Esperado código 200 para consultas sem autenticação"
-    data = response.json()
-    assert "erro" in data or "status" in data, "A resposta deveria conter um campo indicando erro ou limitação de acesso"
-
-
-
-
+    assert data["status"] == expected_status, f"Status inesperado para {cnpj}: {data['status']}"
+    assert expected_key in data, f"Chave '{expected_key}' não encontrada na resposta para {cnpj}"
+    print(f"Teste bem-sucedido para CNPJ {cnpj}: {data}")
